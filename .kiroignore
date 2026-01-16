@@ -36,7 +36,9 @@ chroma.sqlite3
 *.swo
 *~
 
-# Test artifacts
+# Test directories - not needed for dark theme work
+test/
+cypress/
 htmlcov/
 .coverage
 .coverage.*
@@ -44,7 +46,7 @@ coverage/
 cypress/videos/
 cypress/screenshots/
 test/test_files/
-test/
+.pytest_cache/
 
 # Machine learning model files
 **/*.pt
@@ -99,30 +101,68 @@ backend/open_webui/migrations/versions/**
 # Locale/translation files - exclude all language directories
 src/lib/i18n/locales/
 
-# Entire routers directory - large API surface
-backend/open_webui/routers/
+# API and backend logic - not needed for dark theme CSS work
+src/lib/apis/
+src/lib/pyodide/
+src/lib/workers/
 
-# Retrieval system - large codebase
+# Routes - only need for reference, not modification
+src/routes/
+
+# Backend directories - not needed for dark theme CSS work
+backend/open_webui/routers/
 backend/open_webui/retrieval/
+backend/open_webui/models/
+backend/open_webui/socket/
+backend/open_webui/storage/
+backend/open_webui/tools/
+backend/open_webui/utils/
+backend/open_webui/test/
+backend/open_webui/functions.py
+backend/open_webui/tasks.py
+backend/open_webui/env.py
+backend/open_webui/constants.py
+backend/open_webui/config.py
+backend/open_webui/alembic.ini
+backend/open_webui/main.py
 
 # Docker compose variants - keep main docker-compose.yaml only
 docker-compose.*.yaml
 docker-compose.*.yml
+docker-compose.a1111-test.yaml
+docker-compose.amdgpu.yaml
+docker-compose.api.yaml
+docker-compose.data.yaml
+docker-compose.gpu.yaml
+docker-compose.otel.yaml
+docker-compose.playwright.yaml
 
-# Documentation and guides (keep README.md only)
+# Documentation and guides - not needed for dark theme work
 docs/
 TROUBLESHOOTING.md
 CODE_OF_CONDUCT.md
 CONTRIBUTOR_LICENSE_AGREEMENT
 LICENSE_HISTORY
 LICENSE_NOTICE
+LICENSE
+contribution_stats.py
+banner.png
+demo.png
 
-# Scripts and utilities
+# Scripts and utilities - not needed for dark theme work
 scripts/
 *.sh
 *.bat
+run-compose.sh
+run-ollama-docker.sh
+run.sh
+confirm_remove.sh
+update_ollama_models.sh
+backend/dev.sh
+backend/start.sh
+backend/start_windows.bat
 
-# Config files for tools
+# Config files for tools - not needed for dark theme work
 .eslintrc.cjs
 .eslintignore
 .prettierrc
@@ -132,8 +172,46 @@ i18next-parser.config.ts
 cypress.config.ts
 hatch_build.py
 contribution_stats.py
+pyproject.toml
+Makefile
+tsconfig.json
+svelte.config.js
+postcss.config.js
 
 # Temporary files
 *.tmp
 .DS_Store
 .cache/
+
+# ============================================
+# DARK THEME WORK - ADDITIONAL EXCLUSIONS
+# ============================================
+
+# Backend Python code - not needed for CSS theme work
+backend/open_webui/*.py
+backend/requirements.txt
+backend/requirements-min.txt
+
+# Frontend utilities not needed for styling
+src/lib/utils/google-drive-picker.ts
+src/lib/utils/onedrive-file-picker.ts
+src/lib/utils/audio.ts
+src/lib/utils/text-scale.ts
+src/lib/utils/characters/
+
+# Emoji data - already excluded via static/assets/emojis/
+src/lib/emoji-groups.json
+src/lib/emoji-shortcodes.json
+
+# Day.js and other libraries
+src/lib/dayjs.js
+
+# Keyboard shortcuts - not styling related
+src/lib/shortcuts.ts
+
+# Type definitions - not needed for CSS work
+src/lib/types/
+src/app.d.ts
+
+# Theme folder (separate from our spec work)
+theme/
