@@ -1,0 +1,68 @@
+# Build artifacts and dependencies
+node_modules/
+.svelte-kit/
+build/
+dist/
+package-lock.json
+uv.lock
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Database files
+*.db
+*.sqlite3
+*.sqlite3-journal
+chroma.sqlite3
+
+# Environment and secrets
+.env
+.env.*
+.webui_secret_key
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test artifacts
+htmlcov/
+.coverage
+.coverage.*
+coverage/
+cypress/videos/
+cypress/screenshots/
+
+# Logs
+*.log
+logs/
+
+# Large static assets
+static/assets/emojis/
+static/assets/fonts/
+static/assets/images/
+static/pyodide/
+backend/open_webui/static/assets/
+backend/open_webui/static/swagger-ui/
+
+# Data directories
+backend/data/
+backend/open_webui/data/
+
+# Migration files (optional - uncomment if too noisy)
+# backend/open_webui/migrations/versions/
+# backend/open_webui/internal/migrations/
+
+# Temporary files
+*.tmp
+.DS_Store
+.cache/

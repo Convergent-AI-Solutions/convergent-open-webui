@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Create/Update .kiroignore",
+  "description": "Analyzes the project structure and creates or updates a .kiroignore file with appropriate patterns to exclude build artifacts, dependencies, and large files from context",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Analyze this project's structure by checking package.json, pyproject.toml, requirements.txt, go.mod, Cargo.toml, or other dependency files. Then create or update the .kiroignore file with comprehensive patterns to exclude: build artifacts (node_modules, dist, build, target, etc.), dependency lock files, virtual environments, database files, logs, cache directories, IDE files, test artifacts, and large static assets. Include comments explaining each section. If a .kiroignore already exists, review it and suggest improvements based on the project type."
+  }
+}

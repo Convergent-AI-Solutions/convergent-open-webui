@@ -1,0 +1,3 @@
+convergent-open-webui/static/assets/emojis/
+convergent-open-webui/static/assets/fonts/
+convergent-open-webui/static/assets/images/
