@@ -17,9 +17,9 @@ This task list breaks down the implementation of the Convergent Solutions Dark M
   - [x] Create `convergent-dark-theme/` root directory
   - [x] Create `assets/` subdirectory
   - [x] Create placeholder files for all required assets
-- [ ] Initialize version control
-  - [ ] Create `.gitignore` file
-  - [ ] Create `.dockerignore` file
+- [-] Initialize version control
+  - [x] Create `.gitignore` file
+  - [-] Create `.dockerignore` file
   - [ ] Initialize git repository
   - [ ] Create initial commit
 
@@ -28,12 +28,12 @@ This task list breaks down the implementation of the Convergent Solutions Dark M
 **Acceptance Criteria**: Directory structure matches design.md specification
 
 ### 1.2 Docker Configuration
-- [ ] Create Dockerfile
-  - [ ] Define base image with pinned version tag
-  - [ ] Add metadata labels (maintainer, description, version)
-  - [ ] Configure COPY commands for assets
-  - [ ] Configure COPY command for custom.css
-  - [ ] Set environment variables (WEBUI_NAME, WEBUI_URL)
+- [x] Create Dockerfile
+  - [x] Define base image with pinned version tag
+  - [x] Add metadata labels (maintainer, description, version)
+  - [x] Configure COPY commands for assets
+  - [x] Configure COPY command for custom.css
+  - [x] Set environment variables (WEBUI_NAME, WEBUI_URL)
 - [ ] Create docker-compose.yml
   - [ ] Define service configuration
   - [ ] Configure volume mounts for development
