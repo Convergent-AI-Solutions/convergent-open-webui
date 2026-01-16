@@ -44,30 +44,49 @@ This task list breaks down the implementation of the Convergent Solutions Dark M
 **Acceptance Criteria**: Docker image builds and runs successfully
 
 ### 1.3 CSS Foundation
-- [ ] Create custom.css file structure
-  - [ ] Add file header with metadata
-  - [ ] Create section comments per design.md structure
-  - [ ] Add CSS reset/normalization rules
-- [ ] Define CSS custom properties
-  - [ ] Create `:root` selector
-  - [ ] Define placeholder brand colors (--cs-primary, --cs-secondary, --cs-accent)
-  - [ ] Define dark mode base colors (--bg-primary, --bg-secondary, --bg-tertiary)
-  - [ ] Define text colors (--text-primary, --text-secondary, --text-tertiary)
-  - [ ] Define semantic colors (--success, --warning, --error, --info)
-  - [ ] Define border colors (--border-primary, --border-secondary, --border-focus)
-  - [ ] Define shadow colors (--shadow-sm, --shadow-md, --shadow-lg)
-  - [ ] Define spacing system (--spacing-xs through --spacing-xl)
-  - [ ] Define typography variables (--font-family, --font-size-*)
-  - [ ] Define border radius variables (--radius-sm, --radius-md, --radius-lg)
-  - [ ] Define transition variables (--transition-fast, --transition-base, --transition-slow)
-- [ ] Test CSS loading
-  - [ ] Verify custom.css loads in Open WebUI
-  - [ ] Verify CSS variables are applied
-  - [ ] Check browser console for errors
 
-**Estimated Time**: 6 hours  
+#### 1.3.1 Create CSS File Structure
+- [ ] Create custom.css file in project root
+- [ ] Add file header with metadata (author, version, description)
+- [ ] Create section comments per design.md structure
+- [ ] Add CSS reset/normalization rules
+
+**Estimated Time**: 1 hour  
 **Dependencies**: Task 1.2  
-**Acceptance Criteria**: CSS file structure complete with all variables defined
+**Acceptance Criteria**: CSS file created with proper structure
+
+#### 1.3.2 Define Color Variables
+- [ ] Create `:root` selector
+- [ ] Define placeholder brand colors (--cs-primary, --cs-secondary, --cs-accent)
+- [ ] Define dark mode base colors (--bg-primary, --bg-secondary, --bg-tertiary)
+- [ ] Define text colors (--text-primary, --text-secondary, --text-tertiary)
+- [ ] Define semantic colors (--success, --warning, --error, --info)
+- [ ] Define border colors (--border-primary, --border-secondary, --border-focus)
+- [ ] Define shadow colors (--shadow-sm, --shadow-md, --shadow-lg)
+
+**Estimated Time**: 1.5 hours  
+**Dependencies**: Task 1.3.1  
+**Acceptance Criteria**: All color variables defined with placeholder values
+
+#### 1.3.3 Define Layout and Typography Variables
+- [ ] Define spacing system (--spacing-xs through --spacing-xl)
+- [ ] Define typography variables (--font-family, --font-size-*)
+- [ ] Define border radius variables (--radius-sm, --radius-md, --radius-lg)
+- [ ] Define transition variables (--transition-fast, --transition-base, --transition-slow)
+
+**Estimated Time**: 1 hour  
+**Dependencies**: Task 1.3.2  
+**Acceptance Criteria**: All layout and typography variables defined
+
+#### 1.3.4 Test CSS Loading
+- [ ] Verify custom.css loads in Open WebUI
+- [ ] Verify CSS variables are applied using browser DevTools
+- [ ] Check browser console for errors
+- [ ] Test variable inheritance in nested elements
+
+**Estimated Time**: 0.5 hours  
+**Dependencies**: Task 1.3.3  
+**Acceptance Criteria**: CSS loads successfully with no errors
 
 ### 1.4 Placeholder Assets
 - [ ] Create placeholder logo files
@@ -96,32 +115,59 @@ This task list breaks down the implementation of the Convergent Solutions Dark M
 ## Phase 2: Core Component Styling (Week 2)
 
 ### 2.1 Sidebar Component Styling
-- [ ] Identify sidebar selectors
-  - [ ] Inspect Open WebUI HTML structure
-  - [ ] Document sidebar CSS selectors
-  - [ ] Test selector specificity
-- [ ] Apply sidebar base styles
-  - [ ] Set background color to `var(--bg-secondary)`
-  - [ ] Add right border with `var(--border-secondary)`
-  - [ ] Set text color to `var(--text-primary)`
-- [ ] Style sidebar navigation items
-  - [ ] Style default state
-  - [ ] Add hover state with `var(--bg-hover)`
-  - [ ] Add active state with brand color background
-  - [ ] Add focus indicators
-- [ ] Integrate logo in sidebar
-  - [ ] Position logo at top of sidebar
-  - [ ] Center logo horizontally
-  - [ ] Set max-width to 80%
-  - [ ] Add appropriate padding
-- [ ] Test sidebar responsiveness
-  - [ ] Test on mobile (< 768px)
-  - [ ] Test on tablet (768px - 1024px)
-  - [ ] Test on desktop (> 1024px)
 
-**Estimated Time**: 6 hours  
+#### 2.1.1 Identify Sidebar Selectors
+- [ ] Inspect Open WebUI HTML structure using browser DevTools
+- [ ] Document sidebar container CSS selectors
+- [ ] Document sidebar navigation item selectors
+- [ ] Test selector specificity to ensure overrides work
+
+**Estimated Time**: 1 hour  
 **Dependencies**: Phase 1 complete  
-**Acceptance Criteria**: Sidebar styled per design.md specifications
+**Acceptance Criteria**: All sidebar selectors documented
+
+#### 2.1.2 Apply Sidebar Base Styles
+- [ ] Set sidebar background color to `var(--bg-secondary)`
+- [ ] Add right border with `var(--border-secondary)`
+- [ ] Set text color to `var(--text-primary)`
+- [ ] Set sidebar width and height
+
+**Estimated Time**: 1 hour  
+**Dependencies**: Task 2.1.1  
+**Acceptance Criteria**: Sidebar has correct base styling
+
+#### 2.1.3 Style Sidebar Navigation Items
+- [ ] Style navigation item default state
+- [ ] Add hover state with `var(--bg-hover)` background
+- [ ] Add active state with brand color background
+- [ ] Add focus indicators with `var(--border-focus)`
+- [ ] Add smooth transitions between states
+
+**Estimated Time**: 1.5 hours  
+**Dependencies**: Task 2.1.2  
+**Acceptance Criteria**: Navigation items have all interactive states
+
+#### 2.1.4 Integrate Logo in Sidebar
+- [ ] Position logo at top of sidebar
+- [ ] Center logo horizontally
+- [ ] Set max-width to 80%
+- [ ] Add appropriate padding (top and bottom)
+- [ ] Ensure logo is clickable/functional
+
+**Estimated Time**: 1 hour  
+**Dependencies**: Task 2.1.2  
+**Acceptance Criteria**: Logo properly positioned and styled
+
+#### 2.1.5 Test Sidebar Responsiveness
+- [ ] Test on mobile viewport (< 768px)
+- [ ] Test on tablet viewport (768px - 1024px)
+- [ ] Test on desktop viewport (> 1024px)
+- [ ] Verify sidebar collapse/expand behavior
+- [ ] Test touch interactions on mobile
+
+**Estimated Time**: 1.5 hours  
+**Dependencies**: Tasks 2.1.3, 2.1.4  
+**Acceptance Criteria**: Sidebar responsive across all breakpoints
 
 ### 2.2 Chat Interface Styling
 - [ ] Identify chat component selectors
