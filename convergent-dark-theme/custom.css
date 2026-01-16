@@ -1,253 +1,188 @@
 /* ============================================
-   Convergent Solutions Dark Mode Theme
-   Version: 1.0.0
+   Convergent Solutions Dark Mode Theme (MVP)
+   Version: 1.0.1-mvp-fix
    Author: Convergent Solutions
-   Description: Custom dark mode theme for Open WebUI
-   License: MIT
-   Last Updated: 2026-01-16
-   Base Open WebUI Version: git-49a928d
    ============================================ */
 
-/* ============================================
-   1. CSS CUSTOM PROPERTIES (VARIABLES)
-   ============================================ */
 :root {
-   /* Primary Brand Colors - TO BE REPLACED with official Convergent Solutions colors */
+   /* Brand Colors */
    --cs-primary: #0066cc;
+   /* Core Blue */
    --cs-secondary: #00cc99;
+   /* Teal Accent */
    --cs-accent: #ff6b35;
+   /* Orange Accent */
 
-   /* Dark Mode Base Colors */
-   --bg-primary: #1a1a1a;
-   --bg-secondary: #2d2d2d;
-   --bg-tertiary: #3a3a3a;
-   --bg-hover: #404040;
-   --bg-active: #4a4a4a;
+   /* Dark Options */
+   --bg-dark: #1a1a1a;
+   --bg-darker: #111111;
+   --bg-sidebar: #0f172a;
+   /* Slate 900 */
+   --bg-hover: #1e293b;
+   /* Slate 800 */
 
-   /* Text Colors */
+   /* Text */
    --text-primary: #ffffff;
-   --text-secondary: #b0b0b0;
-   --text-tertiary: #808080;
-   --text-disabled: #606060;
-
-   /* Semantic Colors */
-   --success: #4caf50;
-   --warning: #ff9800;
-   --error: #f44336;
-   --info: #2196f3;
-
-   /* Border Colors */
-   --border-primary: #404040;
-   --border-secondary: #333333;
-   --border-focus: var(--cs-primary);
-
-   /* Shadow Colors */
-   --shadow-sm: rgba(0, 0, 0, 0.2);
-   --shadow-md: rgba(0, 0, 0, 0.3);
-   --shadow-lg: rgba(0, 0, 0, 0.4);
-
-   /* Spacing System */
-   --spacing-xs: 0.25rem;
-   --spacing-sm: 0.5rem;
-   --spacing-md: 1rem;
-   --spacing-lg: 1.5rem;
-   --spacing-xl: 2rem;
-
-   /* Typography */
-   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-   --font-size-xs: 0.75rem;
-   --font-size-sm: 0.875rem;
-   --font-size-base: 1rem;
-   --font-size-lg: 1.125rem;
-   --font-size-xl: 1.25rem;
-
-   /* Border Radius */
-   --radius-sm: 4px;
-   --radius-md: 8px;
-   --radius-lg: 12px;
-   --radius-full: 9999px;
-
-   /* Transitions */
-   --transition-fast: 150ms ease;
-   --transition-base: 200ms ease;
-   --transition-slow: 300ms ease;
+   --text-muted: #94a3b8;
+   /* Slate 400 */
 }
 
-/* ============================================
-   2. GLOBAL RESETS AND BASE STYLES
-   ============================================ */
-
-/* CSS Reset/Normalization */
-*,
-*::before,
-*::after {
-   box-sizing: border-box;
+/* 1. Global Reset - Force Dark Mode */
+* {
+   border-color: #334155 !important;
+   /* Slate 700 borders */
 }
 
-/* Ensure consistent font rendering */
+body,
 html {
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   text-rendering: optimizeLegibility;
+   background-color: var(--bg-dark) !important;
+   color: var(--text-primary) !important;
 }
 
-/* Apply dark theme to body */
-body {
-   font-family: var(--font-family);
-   background-color: var(--bg-primary);
-   color: var(--text-primary);
-   line-height: 1.5;
+/* 1.1 Force override Tailwind white backgrounds */
+.bg-white,
+.dark\:bg-gray-900,
+.bg-gray-50,
+.bg-gray-100 {
+   background-color: var(--bg-dark) !important;
+   color: var(--text-primary) !important;
 }
 
-/* Remove default margins and padding for common elements */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-   margin: 0;
+.text-gray-900,
+.text-black,
+.text-gray-800,
+.text-gray-700 {
+   color: var(--text-primary) !important;
 }
 
-/* Improve media defaults */
-img,
-picture,
-video,
-canvas,
-svg {
-   display: block;
-   max-width: 100%;
+.text-gray-500,
+.text-gray-600 {
+   color: var(--text-muted) !important;
 }
 
-/* Remove built-in form typography styles */
+/* 2. Sidebar Implementation */
+#sidebar,
+.sidebar {
+   background-color: var(--bg-sidebar) !important;
+   border-right: 1px solid #334155 !important;
+}
+
+/* Sidebar hover states */
+#sidebar button:hover,
+#sidebar a:hover,
+#sidebar .group:hover {
+   background-color: var(--bg-hover) !important;
+   color: var(--text-primary) !important;
+}
+
+/* 3. Button Styling */
+button[type="submit"],
+#send-message-button {
+   background-color: var(--cs-primary) !important;
+   color: white !important;
+}
+
+button[type="submit"]:hover,
+#send-message-button:hover {
+   filter: brightness(110%);
+}
+
+/* 4. Chat Interface */
+/* User Message Bubble */
+.user-message,
+.message-user {
+   background: linear-gradient(135deg, var(--cs-primary), var(--cs-secondary)) !important;
+   color: white !important;
+   border: none !important;
+}
+
+/* AI Message Bubble */
+.ai-message,
+.message-assistant {
+   background-color: var(--bg-hover) !important;
+   color: var(--text-primary) !important;
+}
+
+/* 5. Dropdowns & Toggles */
+.dropdown-content,
+[role="menu"],
+.bg-white.shadow-xl {
+   background-color: var(--bg-sidebar) !important;
+   border: 1px solid #334155 !important;
+   color: var(--text-primary) !important;
+}
+
+[role="switch"][aria-checked="true"] {
+   background-color: var(--cs-secondary) !important;
+}
+
+/* 6. Form Inputs */
 input,
-button,
 textarea,
 select {
-   font: inherit;
+   background-color: var(--bg-darker) !important;
+   color: var(--text-primary) !important;
+   border: 1px solid #334155 !important;
 }
 
-/* Avoid text overflows */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-   overflow-wrap: break-word;
+input:focus,
+textarea:focus,
+select:focus {
+   border-color: var(--cs-primary) !important;
+   outline: 2px solid var(--cs-primary) !important;
 }
 
-/* ============================================
-   3. LAYOUT COMPONENTS
-   ============================================ */
-/* 3.1 Sidebar - To be implemented in Phase 2 */
-/* 3.2 Main Content Area - To be implemented in Phase 2 */
-/* 3.3 Header - To be implemented in Phase 2 */
-/* 3.4 Footer - To be implemented in Phase 2 */
-
-/* ============================================
-   4. INTERACTIVE ELEMENTS
-   ============================================ */
-/* 4.1 Buttons - To be implemented in Phase 2 */
-/* 4.2 Forms - To be implemented in Phase 2 */
-/* 4.3 Links - To be implemented in Phase 2 */
-/* 4.4 Toggle Switches - To be implemented in Phase 2 */
-
-/* ============================================
-   5. CHAT INTERFACE
-   ============================================ */
-/* 5.1 Message Bubbles - To be implemented in Phase 2 */
-/* 5.2 Code Blocks - To be implemented in Phase 2 */
-/* 5.3 Input Area - To be implemented in Phase 2 */
-
-/* ============================================
-   6. MODALS AND OVERLAYS
-   ============================================ */
-/* 6.1 Modals - To be implemented in Phase 3 */
-/* 6.2 Tooltips - To be implemented in Phase 3 */
-/* 6.3 Popovers - To be implemented in Phase 3 */
-
-/* ============================================
-   7. RESPONSIVE DESIGN
-   ============================================ */
-/* Mobile First Approach - Base styles are for mobile */
-
-/* Tablet */
-@media (min-width: 768px) {
-   :root {
-      --font-size-base: 1rem;
-      --spacing-md: 1rem;
-   }
+/* 7. Tooltips */
+.tippy-box {
+   background-color: var(--bg-sidebar) !important;
+   border: 1px solid #334155 !important;
 }
 
-/* Desktop */
-@media (min-width: 1024px) {
-   :root {
-      --font-size-base: 1rem;
-      --spacing-md: 1.25rem;
-   }
+.tippy-content {
+   color: var(--text-primary) !important;
 }
 
-/* Large Desktop */
-@media (min-width: 1440px) {
-   :root {
-      --font-size-base: 1.125rem;
-      --spacing-md: 1.5rem;
-   }
+/* 8. Scrollbars */
+::-webkit-scrollbar {
+   width: 8px;
+   height: 8px;
 }
 
-/* ============================================
-   8. ACCESSIBILITY ENHANCEMENTS
-   ============================================ */
-
-/* Focus indicators */
-*:focus-visible {
-   outline: 2px solid var(--border-focus) !important;
-   outline-offset: 2px !important;
-   border-radius: var(--radius-sm) !important;
+::-webkit-scrollbar-track {
+   background: var(--bg-dark);
 }
 
-/* Remove default outline for mouse users */
-*:focus:not(:focus-visible) {
-   outline: none !important;
+::-webkit-scrollbar-thumb {
+   background: #475569;
+   border-radius: 4px;
 }
 
-/* High Contrast Mode Support */
-@media (prefers-contrast: high) {
-   :root {
-      --border-primary: #ffffff;
-      --text-secondary: #ffffff;
-      --bg-hover: #555555;
-   }
+::-webkit-scrollbar-thumb:hover {
+   background: #64748b;
 }
 
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-
-   *,
-   *::before,
-   *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-   }
+/* 9. Header Fixes [NEW] */
+/* Fix white header gradient on sticky nav */
+nav.sticky,
+.sticky.top-0 {
+   background-color: var(--bg-dark) !important;
 }
 
-/* ============================================
-   9. ANIMATIONS AND TRANSITIONS
-   ============================================ */
+nav.sticky .from-white,
+nav.sticky .via-white,
+.from-white,
+.via-white,
+.bg-linear-to-b.from-white,
+.bg-gradient-to-b.from-white {
+   --tw-gradient-from: var(--bg-dark) !important;
+   --tw-gradient-to: var(--bg-dark) !important;
+   --tw-gradient-stops: var(--bg-dark), var(--bg-dark) !important;
+   background-image: none !important;
+   background-color: var(--bg-dark) !important;
+}
 
-/* Smooth transitions for interactive elements */
-a,
-button,
-input,
-select,
-textarea {
-   transition: background-color var(--transition-base),
-      border-color var(--transition-base),
-      color var(--transition-base),
-      box-shadow var(--transition-base);
+/* Ensure header text is visible */
+nav.sticky .text-gray-500,
+nav.sticky .text-gray-900 {
+   color: var(--text-primary) !important;
 }

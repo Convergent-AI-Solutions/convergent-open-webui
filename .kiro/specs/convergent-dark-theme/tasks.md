@@ -110,6 +110,25 @@ This task list breaks down the implementation of the Convergent Solutions Dark M
 **Dependencies**: Task 1.1  
 **Acceptance Criteria**: All placeholder assets created and optimized
 
+### 1.5 Build and Test Docker Image
+- [x] Build Docker image with Phase 1 changes
+  - [x] Run `docker build -t convergent-dark-theme:latest .`
+  - [x] Verify build completes successfully
+- [x] Test container startup
+  - [x] Run container on port 8081
+  - [x] Verify Open WebUI starts without errors
+- [x] Verify assets in browser
+  - [x] Check logo displays correctly
+  - [x] Check favicon loads in browser tab
+  - [x] Verify CSS variables are applied
+  - [x] Check browser console for errors
+- [x] Cleanup test container
+  - [x] Stop and remove test container
+
+**Estimated Time**: 0.5 hours  
+**Dependencies**: Tasks 1.1-1.4  
+**Acceptance Criteria**: Docker image builds and runs with all Phase 1 changes visible
+
 ---
 
 ## Phase 2: Core Component Styling (Week 2)
@@ -525,6 +544,29 @@ This task list breaks down the implementation of the Convergent Solutions Dark M
 **Estimated Time**: 6 hours  
 **Dependencies**: Task 4.1  
 **Acceptance Criteria**: WCAG 2.1 AA compliance verified
+
+### 4.5 Automated Testing & Unit Testing [NEW]
+- [ ] Initialize Theme Test Environment
+  - [ ] Initialize `package.json` in `convergent-dark-theme/`
+  - [ ] Install `stylelint` and standard config for CSS linting
+  - [ ] Install `playwright` or `cypress` for E2E/Visual testing
+- [ ] Implement CSS Linting (Static Analysis)
+  - [ ] Configure `.stylelintrc` with best practices
+  - [ ] Run linting on `custom.css`
+  - [ ] Fix any linting errors found
+- [ ] Implement Theme Unit Tests (E2E)
+  - [ ] Create test spec `theme.spec.ts`
+  - [ ] Test: Verify all CSS variables are present in `:root`
+  - [ ] Test: Verify critical components (body, sidebar, buttons) have correct computed styles
+  - [ ] Test: Verify logo and assets return 200 OK
+  - [ ] Test: Screenshot comparison (Visual Regression) for key states
+- [ ] Execute Test Suite
+  - [ ] Run `npm test` against running Docker container
+  - [ ] Verify all tests pass
+
+**Estimated Time**: 8 hours
+**Dependencies**: Task 4.1
+**Acceptance Criteria**: Automated test suite exists and matches manual verification results
 
 ### 4.4 Performance Optimization
 - [ ] Optimize CSS file
