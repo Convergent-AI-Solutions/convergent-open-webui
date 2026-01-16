@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  convergent-webui:
+    # Subtask: Define service configuration
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: convergent-solutions/open-webui:1.0.0
+    container_name: convergent-solutions-webui
+    
+    # Subtask: Set up port mappings
+    # Map host port 3000 to container port 8080 (Open WebUI default)
+    ports:
+      - "3000:8080"
+    
+    # Subtask: Configure volume mounts for development
+    # Mount custom.css and assets/ for live editing during development
+    volumes:
+      # Persistent data volume for Open WebUI backend
+      - convergent-webui-data:/app/backend/data
+      # Development volume mounts for live editing
+      - ./custom.css:/app/build/static/custom.css
+      - ./assets/favicon.svg:/app/build/static/favicon.svg
+      - ./assets/favicon.png:/app/build/static/favicon.png
+      - ./assets/favicon.ico:/app/build/static/favicon.ico
+      - ./assets/apple-touch-icon.png:/app/build/static/apple-touch-icon.png
+      - ./assets/logo.svg:/app/build/static/logo.svg
+      - ./assets/logo.png:/app/build/static/logo.png
+      - ./assets/splash-dark.png:/app/build/static/splash-dark.png
+    
+    # Subtask: Add environment variable overrides
+    environment:
+      # Branding environment variables
+      - WEBUI_NAME=Convergent Solutions AI
+      - WEBUI_URL=https://ai.convergentsolutions.com
+      
+      # Optional: Ollama connection (if using local Ollama)
+      # - OLLAMA_BASE_URL=http://ollama:11434
+      
+      # Optional: OpenAI API configuration
+      # - OPENAI_API_KEY=${OPENAI_API_KEY}
+      # - OPENAI_API_BASE_URL=https://api.openai.com/v1
+      
+      # Optional: Authentication settings
+      # - ENABLE_SIGNUP=false
+      # - DEFAULT_USER_ROLE=user
+      
+      # Optional: Additional Open WebUI environment variables
+      # - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
+      # - ENABLE_RAG_WEB_SEARCH=true
+      # - RAG_WEB_SEARCH_ENGINE=google
+    
+    restart: unless-stopped
+    
+    # Optional: Uncomment to connect to Ollama service
+    # depends_on:
+    #   - ollama
+    
+    networks:
+      - convergent-network
+
+  # Optional: Ollama service for local LLM hosting
+  # Uncomment this section if you want to run Ollama alongside Open WebUI
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   container_name: convergent-ollama
+  #   volumes:
+  #     - ollama-data:/root/.ollama
+  #   restart: unless-stopped
+  #   networks:
+  #     - convergent-network
+  #   # Uncomment for GPU support (NVIDIA)
+  #   # deploy:
+  #   #   resources:
+  #   #     reservations:
+  #   #       devices:
+  #   #         - driver: nvidia
+  #   #           count: all
+  #   #           capabilities: [gpu]
+
+volumes:
+  convergent-webui-data:
+    driver: local
+  # Uncomment if using Ollama service
+  # ollama-data:
+  #   driver: local
+
+networks:
+  convergent-network:
+    driver: bridge
