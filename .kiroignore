@@ -45,6 +45,9 @@ cypress/videos/
 cypress/screenshots/
 test/test_files/
 
+# Machine learning model files
+**/*.pt
+
 # Logs
 *.log
 logs/
