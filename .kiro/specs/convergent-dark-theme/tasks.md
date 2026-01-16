@@ -1,118 +1,97 @@
-# Convergent Solutions Dark Mode Theme - Task List (Refined Post-MVP)
+# Convergent Solutions Dark Mode Theme - Task List (Refined + Maintainable)
 
 ## Task Overview
 
-This task list has been updated based on the **MVP Build Lessons**. The strategy shifts from granular, component-by-component styling to **Global System Overrides** and **Utility Class Targeting** (e.g., overriding `bg-white` globally rather than fixing every card individually).
+This task list incorporates **MVP Lessons** and **New User Requirements** (Loader Logo, Light Mode Support).
 
-**Total Estimated Time**: 3 Weeks (Compressed from 5)
-**Strategy**: "Aggressive Global Overrides -> Targeted Fixes -> Visual Verification"
+**Total Estimated Time**: 3-4 Weeks
+**Strategy**: "Aggressive Overrides -> Refactor for Specificity -> Polish -> Verify"
 
 ---
 
 ## Phase 1: Foundation Setup (COMPLETED)
 *Status: 100% Complete*
 
-### 1.1 Project Structure Setup
-- [x] Create project directory structure (`convergent-dark-theme/`, `assets/`)
-- [x] Create placeholder assets
+### 1.1 Project Structure & Docker (Completed)
+- [x] Project directory, Assets folder, Dockerfile, docker-compose.yml created.
+- [x] MVP Container verified.
 
-### 1.2 Docker Configuration
-- [x] Create Dockerfile with pinned base image (`git-49a928d`)
-- [x] Create `docker-compose.yml`
-- [x] Verify Docker build and startup
-
-### 1.3 CSS Foundation
-- [x] Create `custom.css`
-- [x] Define `:root` variables (Colors, Typography, Spacing)
-- [x] Implement CSS Reset/Normalization
-- [x] Verify CSS loading in container
-
-### 1.4 Placeholder Assets
-- [x] Create and optimize placeholder logos/favicons/splash
-- [x] Verify total asset size
+### 1.2 CSS & Asset Baseline (Completed)
+- [x] `custom.css` created with `:root` and aggressive overrides.
+- [x] Placeholder assets created and optimized.
 
 ---
 
-## Phase 2: System-Wide Overrides (The "MVP + Refinement" Phase)
-*Strategy: Scale the MVP approach to cover the entire application.*
+## Phase 2: System-Wide Overrides & Refactoring
+*Strategy: Complete the dark mode overrides, then clean up the "nuclear" !important usage.*
 
-### 2.1 CSS Utility Overrides (Global Dark Mode)
-*Instead of styling specific components, we force-override light-mode Tailwind utilities.*
-- [x] **Global Background Reset**: Force `body` and `html` to `var(--bg-dark)`
-- [x] **Tailwind Light Override**: Override `.bg-white`, `.bg-gray-50`, `.bg-gray-100` to `var(--bg-dark)`
-- [x] **Tailwind Text Override**: Override `.text-gray-900`, `.text-black` to `var(--text-primary)`
-- [x] **Header Gradient Fix**: Override `.from-white`, `.via-white` to remove light fade effects (Fix Component: 2.1.X)
+### 2.1 CSS Utility Overrides (Completed in MVP)
+- [x] **Global Background**: Forced dark body/html.
+- [x] **Tailwind Reset**: Overridden `.bg-white`, `.text-gray-900`, etc.
+- [x] **Header Fix**: Resolved white gradient issue.
 
-### 2.2 Critical Component Overrides
-*Targeting specific shadow/complex components that resist global overrides.*
-- [x] **Sidebar Implementation**: Fixed background to `var(--bg-sidebar)` (Slate 900)
-- [x] **Chat Bubbles**: Implemented "Convergent Blue" gradient for user messages
+### 2.2 Critical Component Overrides (In Progress)
+- [x] **Sidebar**: Dark Slate background.
+- [x] **Chat Bubbles**: Brand-colored user messages.
 - [x] **Form Inputs**: Force dark backgrounds on `input`, `textarea`, `select`
-- [ ] **Modals & Dialogs**: verify background on all modal types (Settings, Delete Confirmation)
-- [ ] **Dropdown Menus**: Verify background on user profile dropdowns
-- [ ] **Code Blocks**: Style syntax highlighting background and copy button
+- [x] **Modals & Dialogs**: Verified background on Settings modal (Dark #1a1a1a).
+- [x] **Dropdown Menus**: Verified background on Profile/Model dropdowns.
+- [x] **Code Blocks**: Verified syntax highlighting and dark background.
+- [ ] **Markdown Content**: Verify lists, tables, and headers in chat responses.
 
 ### 2.3 Interactive Polish
-- [ ] **Button States**: Standardize hover/active brightness filters for primary/secondary buttons
-- [ ] **Focus Rings**: Ensure global matching focus ring color (`var(--cs-primary)`)
-- [ ] **Scrollbars**: Apply custom dark scrollbar styling globally (Webkit)
+- [ ] **Loader Branding**: Ensure page loading screen displays Convergent Logo instead of default Open WebUI logo.
+- [ ] **Button States**: Standardize hover/active brightness filters for primary/secondary buttons.
+- [ ] **Focus Rings**: Ensure global matching focus ring color (`var(--cs-primary)`).
+- [ ] **Scrollbars**: Apply custom dark scrollbar styling globally (Webkit).
 
-**Estimated Time**: 3 days
-**Dependencies**: MVP Build
-**Acceptance Criteria**: All visible UI elements are dark; no "white flashes".
+### 2.4 Theme System Evolution (Light Mode Support) [NEW]
+*Goal: Enable Light/Dark toggle while maintaining Convergent Branding in both.*
+- [ ] **Restore Theme Toggle**: Un-hide or restore the functionality of the UI Theme Switcher.
+- [ ] **Scoped Overrides**: Refactor global "nuclear" overrides to apply only within `.dark` selector (e.g., `html.dark body`).
+- [ ] **Branded Light Mode**: 
+    - Create a Light Mode variable set (White backgrounds, Dark text).
+    - Ensure `--cs-primary` (Blue) and Logos remain consistent in Light Mode.
+- [ ] **Cleanup !important**: Remove explicit `!important` tags that prevent Light Mode from activating.
 
 ---
 
 ## Phase 3: Visual Verification & "Edge Case Hunting"
-*Strategy: Use the Browser Subagent to find what we missed.*
+*Strategy: Use the Browser Subagent to simulate real user journeys.*
 
-### 3.1 Visual Regression / "Sanity" Tour
-- [x] **Login Flow**: Verify Login/Signup Pages (Verified in MVP)
-- [x] **Dashboard Main**: Verify Chat Interface & Sidebar (Verified in MVP)
-- [ ] **Settings Menu**: Navigate to User Settings -> Verify styling of tabs and toggles
-- [ ] **Mobile View**: Resize browser to <768px -> Verify Sidebar collapse and padding
-- [ ] **Markdown Rendering**: Render complex markdown (tables, lists, bold) -> Verify contrast
+### 3.1 Visual Regression Tour
+- [x] **Login Flow**: Sign Up, Sign In (Verified).
+- [x] **Dashboard**: Sidebar, Chat Input (Verified).
+- [x] **Interactive Components**: Modals, Dropdowns, Code Blocks (Verified).
+- [ ] **Light Mode Check**: Verify toggling between Light/Dark works (after Phase 2.4).
+- [ ] **Mobile Responsive**: Verify Sidebar collapse, Chat Input spacing on <768px.
+- [ ] **Error States**: Trigger an error (e.g., failed connection) to check Toast/Alert styling.
 
-### 3.2 Automated Asset Verification
+### 3.2 Automated Asset & Contrast Check
 - [ ] **Browser Subagent Crawl**:
-    - [ ] Visit 5 random sub-pages (if accessible)
-    - [ ] Check console for 404s on assets
-    - [ ] Check for "white" computed background colors in top 50% of screen
-
-**Estimated Time**: 2 days
-**Dependencies**: Phase 2
-**Acceptance Criteria**: Walkthrough artifact updated with screenshots of Settings, Mobile, and Markdown.
+    - [ ] Check for broken images (404s).
+    - [ ] Calculate contrast ratio on primary buttons (Target 4.5:1).
+    - [ ] Check for invisible text (foreground == background).
 
 ---
 
 ## Phase 4: Production Readiness (Testing & Assets)
 
-### 4.1 Official Brand Integration
-- [ ] Replace placeholder Assets with Official Convergent files (Logo, Favicon)
-- [ ] Final Color Tuning: Update `:root` hex codes to exact brand spec
-- [ ] Font Verification: Ensure no external font requests (Privacy) or bundle official fonts
+### 4.1 Asset Integration & Fallback
+- [ ] **Official Assets**: Replace placeholders with final designs.
+- [ ] **Asset Generation (Fallback)**: If design team delays, use `generate_image` to create "Better-than-placeholder" assets for v1.0.
 
-### 4.2 Optimization & Bundling
-- [ ] **CSS Minification**: Compress `custom.css`
-- [ ] **Image Optimization**: Ensure official assets are compressed (WebP/SVG)
-- [ ] **Docker Tagging**: Build final `convergent-dark-theme:1.0.0` image
+### 4.2 Optimization
+- [ ] **CSS Minification**: Compress for production.
+- [ ] **Docker Tagging**: Build `convergent-dark-theme:1.0.0` (Production).
 
 ### 4.3 Documentation
-- [ ] Update `README.md` with:
-    - [ ] Installation instructions (`docker run`)
-    - [ ] Environment Variable config
-    - [ ] Troubleshooting (e.g., "Clear browser cache if old theme persists")
-- [ ] Create `CHANGELOG.md`
-
-**Estimated Time**: 3 days
-**Dependencies**: Phase 3
-**Acceptance Criteria**: Final artifacts ready for handoff.
+- [ ] **QUICKSTART.md**: (Created MVP version, update for Prod).
+- [ ] **Admin Guide**: How to deploy, env vars, rollback.
 
 ---
 
-## Phase 5: Handoff & Deployment
-- [ ] **Final Container Verification**: Run the 1.0.0 image on a clean machine
-- [ ] **Stakeholder Demo**: Walkthrough the final UI
-- [ ] **Archive**: Zip up source + assets + documentation
-
-**Estimated Time**: 1 day
+## Phase 5: Handoff
+- [ ] **Final Verification**: Clean install test.
+- [ ] **Stakeholder Demo**.
+- [ ] **Archive**.
