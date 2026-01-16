@@ -44,6 +44,7 @@ coverage/
 cypress/videos/
 cypress/screenshots/
 test/test_files/
+test/
 
 # Machine learning model files
 **/*.pt
@@ -53,28 +54,31 @@ test/test_files/
 logs/
 
 # Large static assets (thousands of emoji SVGs)
-static/assets/emojis/
-static/assets/emojis/**
-static/assets/fonts/
-static/assets/fonts/**
-static/assets/images/
-static/assets/images/**
+static/assets/
+static/assets/**
 static/pyodide/
 static/pyodide/**
-backend/open_webui/static/assets/
-backend/open_webui/static/assets/**
-backend/open_webui/static/swagger-ui/
-backend/open_webui/static/swagger-ui/**
-backend/open_webui/static/fonts/
-backend/open_webui/static/fonts/**
+static/audio/
+static/themes/
+backend/open_webui/static/
+backend/open_webui/static/**
 
-# Additional static file patterns
+# Additional static file patterns - exclude all media
 *.svg
 *.woff
 *.woff2
 *.ttf
 *.eot
 *.otf
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.webp
+*.mp3
+*.wav
+*.ogg
 
 # Data directories
 backend/data/
@@ -87,9 +91,47 @@ backend/open_webui/data/
 .git/
 .github/
 
-# Migration files (optional - uncomment if too noisy)
-# backend/open_webui/migrations/versions/
-# backend/open_webui/internal/migrations/
+# Migration files - exclude to reduce context noise
+backend/open_webui/migrations/versions/
+backend/open_webui/internal/migrations/
+backend/open_webui/migrations/versions/**
+
+# Locale/translation files - exclude all language directories
+src/lib/i18n/locales/
+
+# Entire routers directory - large API surface
+backend/open_webui/routers/
+
+# Retrieval system - large codebase
+backend/open_webui/retrieval/
+
+# Docker compose variants - keep main docker-compose.yaml only
+docker-compose.*.yaml
+docker-compose.*.yml
+
+# Documentation and guides (keep README.md only)
+docs/
+TROUBLESHOOTING.md
+CODE_OF_CONDUCT.md
+CONTRIBUTOR_LICENSE_AGREEMENT
+LICENSE_HISTORY
+LICENSE_NOTICE
+
+# Scripts and utilities
+scripts/
+*.sh
+*.bat
+
+# Config files for tools
+.eslintrc.cjs
+.eslintignore
+.prettierrc
+.prettierignore
+.npmrc
+i18next-parser.config.ts
+cypress.config.ts
+hatch_build.py
+contribution_stats.py
 
 # Temporary files
 *.tmp
