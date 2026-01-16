@@ -1,0 +1,43 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+CHANGELOG.md
+LICENSE
+*.md
+
+# Development files
+.vscode
+.idea
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Docker files (don't copy into image)
+docker-compose.yml
+.dockerignore
+
+# Build artifacts
+node_modules
+dist
+build
+
+# Screenshots and examples
+screenshots/
+examples/
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Keep only the favicon files we explicitly COPY
+!favicon.svg
+!favicon.png
+!favicon.ico

@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  open-webui-dark:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: open-webui-dark:1.0.0
+    container_name: open-webui-dark
+    ports:
+      - "3000:8080"
+    volumes:
+      - open-webui-data:/app/backend/data
+    environment:
+      - WEBUI_NAME=Open WebUI Dark
+      - OLLAMA_BASE_URL=http://ollama:11434
+      # Optional: Add other environment variables
+      # - OPENAI_API_KEY=your-key-here
+    restart: unless-stopped
+    depends_on:
+      - ollama
+    networks:
+      - open-webui-network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - open-webui-network
+    # Uncomment for GPU support
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+volumes:
+  open-webui-data:
+  ollama-data:
+
+networks:
+  open-webui-network:
+    driver: bridge

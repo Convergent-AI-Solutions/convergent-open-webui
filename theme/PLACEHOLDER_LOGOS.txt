@@ -1,0 +1,62 @@
+PLACEHOLDER FOR CUSTOM LOGOS
+=============================
+
+This file is a placeholder. Replace it with your actual logo files:
+
+Required Files:
+---------------
+1. favicon.svg  - Vector format (SVG)
+   - Recommended: 32x32 or scalable
+   - Used for modern browsers
+
+2. favicon.png  - Raster format (PNG)
+   - Recommended: 192x192 or 512x512
+   - Used for high-resolution displays
+   - Transparent background recommended
+
+3. favicon.ico  - Icon format (ICO)
+   - Recommended: Multi-size (16x16, 32x32, 48x48)
+   - Used for browser tabs and bookmarks
+   - Legacy browser support
+
+How to Add Your Logos:
+----------------------
+1. Prepare your logo in the three formats above
+2. Name them exactly as: favicon.svg, favicon.png, favicon.ico
+3. Copy them to this directory (theme/)
+4. Delete this PLACEHOLDER_LOGOS.txt file
+5. Rebuild the Docker image
+
+Example Commands:
+-----------------
+# Copy your logos
+cp /path/to/your/logo.svg theme/favicon.svg
+cp /path/to/your/logo.png theme/favicon.png
+cp /path/to/your/logo.ico theme/favicon.ico
+
+# Remove this placeholder
+rm theme/PLACEHOLDER_LOGOS.txt
+
+# Rebuild the image
+cd theme
+docker-compose build --no-cache
+docker-compose up -d
+
+Logo Design Tips:
+-----------------
+- Keep it simple and recognizable at small sizes
+- Use high contrast for visibility
+- Test on both light and dark backgrounds
+- Ensure it looks good at 16x16 pixels (smallest size)
+- Use transparent backgrounds for PNG/ICO
+- SVG should be optimized and clean
+
+Tools for Creating Logos:
+--------------------------
+- SVG: Inkscape, Figma, Adobe Illustrator
+- PNG: GIMP, Photoshop, Canva
+- ICO: Online converters (favicon.io, realfavicongenerator.net)
+- Optimization: SVGO, TinyPNG, ImageOptim
+
+Once you add your logos, this placeholder will be ignored by Docker
+due to the .dockerignore configuration.

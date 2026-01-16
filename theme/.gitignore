@@ -1,0 +1,33 @@
+# Ignore actual logo files (add them manually, don't commit)
+favicon.svg
+favicon.png
+favicon.ico
+
+# Docker volumes
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+
+# Screenshots (if you add them)
+screenshots/
+*.png
+*.jpg
+*.jpeg
+
+# Keep placeholder
+!PLACEHOLDER_LOGOS.txt
