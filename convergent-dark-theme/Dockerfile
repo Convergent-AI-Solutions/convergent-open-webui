@@ -32,7 +32,7 @@ COPY assets/splash-dark.png /app/build/static/splash-dark.png
 COPY custom.css /app/build/static/custom.css
 
 # Subtask 1.2.5: Set environment variables (WEBUI_NAME, WEBUI_URL)
-ENV WEBUI_NAME="Convergent Solutions AI"
+ENV WEBUI_NAME="CSI"
 ENV WEBUI_URL="https://ai.convergentsolutions.com"
 
 # Expose the default Open WebUI port

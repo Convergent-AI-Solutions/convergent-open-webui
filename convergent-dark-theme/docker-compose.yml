@@ -12,7 +12,7 @@ services:
     # Subtask: Set up port mappings
     # Map host port 3000 to container port 8080 (Open WebUI default)
     ports:
-      - "3000:8080"
+      - "3001:8080"
     
     # Subtask: Configure volume mounts for development
     # Mount custom.css and assets/ for live editing during development
@@ -32,7 +32,7 @@ services:
     # Subtask: Add environment variable overrides
     environment:
       # Branding environment variables
-      - WEBUI_NAME=Convergent Solutions AI
+      - WEBUI_NAME=CSI
       - WEBUI_URL=https://ai.convergentsolutions.com
       
       # Optional: Ollama connection (if using local Ollama)

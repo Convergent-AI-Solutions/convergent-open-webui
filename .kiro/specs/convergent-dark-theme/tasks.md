@@ -57,14 +57,14 @@ This task list incorporates **MVP Lessons** and **New User Requirements**, prior
 - [x] **Login Flow**: Sign Up, Sign In (Verified).
 - [x] **Dashboard**: Sidebar, Chat Input (Verified).
 - [x] **Interactive Components**: Modals, Dropdowns, Code Blocks (Verified).
-- [ ] **Mobile Responsive**: Verify Sidebar collapse, Chat Input spacing on <768px.
-- [ ] **Error States**: Trigger an error (e.g., failed connection) to check Toast/Alert styling.
+- [-] **Mobile Responsive**: Verify Sidebar collapse, Chat Input spacing on <768px. (Skipped)
+- [-] **Error States**: Trigger an error (e.g., failed connection) to check Toast/Alert styling. (Skipped)
 
 ### 3.2 Automated Asset & Contrast Check
-- [ ] **Browser Subagent Crawl**:
-    - [ ] Check for broken images (404s).
-    - [ ] Calculate contrast ratio on primary buttons (Target 4.5:1).
-    - [ ] Check for invisible text (foreground == background).
+- [-] **Browser Subagent Crawl** (Skipped entirely):
+    - [-] Check for broken images (404s).
+    - [-] Calculate contrast ratio on primary buttons (Target 4.5:1).
+    - [-] Check for invisible text (foreground == background).
 
 ---
 

@@ -261,19 +261,22 @@
 										{:else if mode === 'ldap'}
 											{$i18n.t(`Sign in to {{WEBUI_NAME}} with LDAP`, { WEBUI_NAME: $WEBUI_NAME })}
 										{:else if mode === 'signin'}
-											{$i18n.t(`Sign in to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
+											{$i18n.t(`Sign in to Convergent Solutions Intelligence`)}
 										{:else}
-											{$i18n.t(`Sign up to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
+											{$i18n.t(`Sign up to Convergent Solutions Intelligence`)}
 										{/if}
+									</div>
+									<div class=" text-sm font-medium text-gray-500 mb-2">
+										(Built on Open WebUI)
 									</div>
 
 									{#if $config?.onboarding ?? false}
-										<div class="mt-1 text-xs font-medium text-gray-600 dark:text-gray-500">
+										<!-- <div class="mt-1 text-xs font-medium text-gray-600 dark:text-gray-500">
 											ⓘ {$WEBUI_NAME}
 											{$i18n.t(
 												'does not make any external connections, and your data stays securely on your locally hosted server.'
 											)}
-										</div>
+										</div> -->
 									{/if}
 								</div>
 

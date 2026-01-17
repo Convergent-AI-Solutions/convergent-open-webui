@@ -40,6 +40,7 @@
 
 /* Force Dark Mode defaults ONLY when .dark class is present or forced */
 html.dark,
+html:not(.dark),
 body {
    background-color: var(--bg-primary) !important;
    color: var(--text-primary);
@@ -52,8 +53,11 @@ body {
 
 /* Override Tailwind background utilities ONLY within Dark Mode container */
 html.dark .bg-white,
+html:not(.dark) .bg-white,
 html.dark .bg-gray-50,
-html.dark .bg-gray-100 {
+html:not(.dark) .bg-gray-50,
+html.dark .bg-gray-100,
+html:not(.dark) .bg-gray-100 {
    background-color: var(--bg-primary) !important;
 }
 
@@ -69,13 +73,18 @@ html.dark .bg-gray-800 {
 
 /* Override Text Colors */
 html.dark .text-gray-900,
+html:not(.dark) .text-gray-900,
 html.dark .text-black,
-html.dark .dark\:text-gray-100 {
+html:not(.dark) .text-black,
+html.dark .dark\:text-gray-100,
+html:not(.dark) .dark\:text-gray-100 {
    color: var(--text-primary) !important;
 }
 
 html.dark .text-gray-500,
-html.dark .text-gray-600 {
+html:not(.dark) .text-gray-500,
+html.dark .text-gray-600,
+html:not(.dark) .text-gray-600 {
    color: var(--text-secondary) !important;
 }
 

@@ -360,7 +360,7 @@
 
 					if ($isLastActiveTab) {
 						if ($settings?.notificationEnabled ?? false) {
-							new Notification(`${title} • Open WebUI`, {
+							new Notification(`${title} • CSI`, {
 								body: content,
 								icon: `${WEBUI_BASE_URL}/static/favicon.png`
 							});
@@ -563,7 +563,7 @@
 
 				if ($isLastActiveTab) {
 					if ($settings?.notificationEnabled ?? false) {
-						new Notification(`${title} • Open WebUI`, {
+						new Notification(`${title} • CSI`, {
 							body: data?.content,
 							icon: `${WEBUI_API_BASE_URL}/users/${data?.user?.id}/profile/image`
 						});
@@ -766,6 +766,8 @@
 
 		if (backendConfig) {
 			// Save Backend Status to Store
+			// Force branding regardless of backend config
+			backendConfig.name = 'CSI';
 			await config.set(backendConfig);
 			await WEBUI_NAME.set(backendConfig.name);
 
