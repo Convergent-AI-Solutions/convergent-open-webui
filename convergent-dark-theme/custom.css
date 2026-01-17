@@ -1,155 +1,163 @@
 /* ============================================
-   Convergent Solutions Dark Mode Theme (MVP)
-   Version: 1.0.1-mvp-fix
+   Convergent Solutions Dark Mode Theme
+   Version: 1.1.0 (Refactored for Specificity)
    Author: Convergent Solutions
    ============================================ */
 
+/* ============================================
+   1. CSS CUSTOM PROPERTIES (VARIABLES)
+   ============================================ */
 :root {
-   /* Brand Colors */
+   /* Primary Brand Colors */
    --cs-primary: #0066cc;
-   /* Core Blue */
    --cs-secondary: #00cc99;
-   /* Teal Accent */
    --cs-accent: #ff6b35;
-   /* Orange Accent */
 
-   /* Dark Options */
-   --bg-dark: #1a1a1a;
-   --bg-darker: #111111;
-   --bg-sidebar: #0f172a;
-   /* Slate 900 */
-   --bg-hover: #1e293b;
-   /* Slate 800 */
+   /* Dark Mode Base Colors */
+   --bg-primary: #1a1a1a;
+   --bg-secondary: #2d2d2d;
+   --bg-tertiary: #3a3a3a;
+   --bg-hover: #404040;
+   --bg-active: #4a4a4a;
 
-   /* Text */
+   /* Text Colors */
    --text-primary: #ffffff;
-   --text-muted: #94a3b8;
-   /* Slate 400 */
+   --text-secondary: #b0b0b0;
+   --text-tertiary: #808080;
+
+   /* Border Colors */
+   --border-primary: #404040;
+   --border-focus: var(--cs-primary);
+
+   /* Dimensions & Spacing */
+   --radius-md: 8px;
+   --transition-fast: 150ms ease;
 }
 
-/* 1. Global Reset - Force Dark Mode */
-* {
-   border-color: #334155 !important;
-   /* Slate 700 borders */
+/* ============================================
+   2. GLOBAL RESETS (SCOPED)
+   ============================================ */
+
+/* Force Dark Mode defaults ONLY when .dark class is present or forced */
+html.dark,
+body {
+   background-color: var(--bg-primary) !important;
+   color: var(--text-primary);
+   -webkit-font-smoothing: antialiased;
 }
 
-body,
-html {
-   background-color: var(--bg-dark) !important;
+/* ============================================
+   3. UTILITY CLASS OVERRIDES (SCOPED)
+   ============================================ */
+
+/* Override Tailwind background utilities ONLY within Dark Mode container */
+html.dark .bg-white,
+html.dark .bg-gray-50,
+html.dark .bg-gray-100 {
+   background-color: var(--bg-primary) !important;
+}
+
+/* Fix specific dark mode tailwind utility clashes */
+html.dark .dark\:bg-gray-900,
+html.dark .bg-gray-950 {
+   background-color: var(--bg-secondary) !important;
+}
+
+html.dark .bg-gray-800 {
+   background-color: var(--bg-tertiary) !important;
+}
+
+/* Override Text Colors */
+html.dark .text-gray-900,
+html.dark .text-black,
+html.dark .dark\:text-gray-100 {
    color: var(--text-primary) !important;
 }
 
-/* 1.1 Force override Tailwind white backgrounds */
-.bg-white,
-.dark\:bg-gray-900,
-.bg-gray-50,
-.bg-gray-100 {
-   background-color: var(--bg-dark) !important;
-   color: var(--text-primary) !important;
+html.dark .text-gray-500,
+html.dark .text-gray-600 {
+   color: var(--text-secondary) !important;
 }
 
-.text-gray-900,
-.text-black,
-.text-gray-800,
-.text-gray-700 {
-   color: var(--text-primary) !important;
+/* ============================================
+   4. COMPONENT SPECIFIC OVERRIDES
+   ============================================ */
+
+/* Sidebar */
+html.dark #sidebar,
+html.dark .sidebar {
+   background-color: #0f172a !important;
+   border-right: 1px solid var(--border-primary);
 }
 
-.text-gray-500,
-.text-gray-600 {
-   color: var(--text-muted) !important;
-}
-
-/* 2. Sidebar Implementation */
-#sidebar,
-.sidebar {
-   background-color: var(--bg-sidebar) !important;
-   border-right: 1px solid #334155 !important;
-}
-
-/* Sidebar hover states */
-#sidebar button:hover,
-#sidebar a:hover,
-#sidebar .group:hover {
-   background-color: var(--bg-hover) !important;
-   color: var(--text-primary) !important;
-}
-
-/* 3. Button Styling */
-button[type="submit"],
-#send-message-button {
-   background-color: var(--cs-primary) !important;
-   color: white !important;
-}
-
-button[type="submit"]:hover,
-#send-message-button:hover {
-   filter: brightness(110%);
-}
-
-/* 4. Chat Interface */
-/* User Message Bubble */
-.user-message,
-.message-user {
+/* Chat Bubbles */
+html.dark .user-message,
+html.dark .message-user {
    background: linear-gradient(135deg, var(--cs-primary), var(--cs-secondary)) !important;
-   color: white !important;
+   color: #ffffff !important;
    border: none !important;
 }
 
-/* AI Message Bubble */
-.ai-message,
-.message-assistant {
-   background-color: var(--bg-hover) !important;
+html.dark .ai-message,
+html.dark .message-ai {
+   background-color: var(--bg-secondary) !important;
    color: var(--text-primary) !important;
 }
 
-/* 5. Dropdowns & Toggles */
-.dropdown-content,
-[role="menu"],
-.bg-white.shadow-xl {
-   background-color: var(--bg-sidebar) !important;
-   border: 1px solid #334155 !important;
+/* Inputs & Forms */
+html.dark input,
+html.dark textarea,
+html.dark select {
+   background-color: var(--bg-secondary) !important;
    color: var(--text-primary) !important;
+   border: 1px solid var(--border-primary) !important;
 }
 
-[role="switch"][aria-checked="true"] {
-   background-color: var(--cs-secondary) !important;
-}
-
-/* 6. Form Inputs */
-input,
-textarea,
-select {
-   background-color: var(--bg-darker) !important;
-   color: var(--text-primary) !important;
-   border: 1px solid #334155 !important;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
+html.dark input:focus,
+html.dark textarea:focus {
    border-color: var(--cs-primary) !important;
-   outline: 2px solid var(--cs-primary) !important;
+   box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2) !important;
 }
 
-/* 7. Tooltips */
-.tippy-box {
-   background-color: var(--bg-sidebar) !important;
-   border: 1px solid #334155 !important;
+/* Buttons */
+/* Apply to all primary buttons */
+html.dark button.primary,
+html.dark .btn-primary,
+html.dark button[type="submit"],
+html.dark #send-message-button {
+   background-color: var(--cs-primary) !important;
+   color: white !important;
+   border-radius: var(--radius-md);
 }
 
-.tippy-content {
-   color: var(--text-primary) !important;
+/* Modals */
+html.dark .modal-content,
+html.dark [role="dialog"] {
+   background-color: var(--bg-primary) !important;
+   border: 1px solid var(--border-primary);
 }
 
-/* 8. Scrollbars */
+/* Code Blocks */
+html.dark pre,
+html.dark code {
+   background-color: #0d1117 !important;
+   color: #c9d1d9 !important;
+}
+
+/* Menu/Dropdowns */
+html.dark [role="menu"],
+html.dark .dropdown-content {
+   background-color: #0f172a !important;
+   border: 1px solid var(--border-primary);
+}
+
+/* Scrollbars (Webkit) - Global usually okay, but let's stick to theme */
 ::-webkit-scrollbar {
    width: 8px;
-   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-   background: var(--bg-dark);
+   background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -157,32 +165,31 @@ select:focus {
    border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-   background: #64748b;
+/* Header Fixes */
+html.dark nav.sticky,
+html.dark .sticky.top-0 {
+   background-color: var(--bg-primary) !important;
 }
 
-/* 9. Header Fixes [NEW] */
-/* Fix white header gradient on sticky nav */
-nav.sticky,
-.sticky.top-0 {
-   background-color: var(--bg-dark) !important;
-}
-
-nav.sticky .from-white,
-nav.sticky .via-white,
-.from-white,
-.via-white,
-.bg-linear-to-b.from-white,
-.bg-gradient-to-b.from-white {
-   --tw-gradient-from: var(--bg-dark) !important;
-   --tw-gradient-to: var(--bg-dark) !important;
-   --tw-gradient-stops: var(--bg-dark), var(--bg-dark) !important;
+/* Header Gradient Killers */
+html.dark .from-white,
+html.dark .via-white {
+   --tw-gradient-from: var(--bg-primary) !important;
+   --tw-gradient-to: var(--bg-primary) !important;
    background-image: none !important;
-   background-color: var(--bg-dark) !important;
+   background-color: var(--bg-primary) !important;
 }
 
-/* Ensure header text is visible */
-nav.sticky .text-gray-500,
-nav.sticky .text-gray-900 {
-   color: var(--text-primary) !important;
+/* ============================================
+   5. INTERACTIVE & POLISH
+   ============================================ */
+
+/* Focus Rings */
+*:focus-visible {
+   outline: 2px solid var(--cs-primary) !important;
+}
+
+/* Splash Loader - ID specific, safe to be global */
+#splash-screen {
+   background-color: var(--bg-primary) !important;
 }

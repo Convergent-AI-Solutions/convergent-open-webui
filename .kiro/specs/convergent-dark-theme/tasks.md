@@ -40,13 +40,13 @@ This task list incorporates **MVP Lessons** and **New User Requirements**, prior
 - [x] **Markdown Content**: Verified lists, tables, and headers in chat responses.
 
 ### 2.3 Interactive Polish
-- [ ] **Loader Branding**: Ensure page loading screen displays Convergent Logo instead of default Open WebUI logo.
-- [ ] **Button States**: Standardize hover/active brightness filters for primary/secondary buttons.
-- [ ] **Focus Rings**: Ensure global matching focus ring color (`var(--cs-primary)`).
-- [ ] **Scrollbars**: Apply custom dark scrollbar styling globally (Webkit).
+- [x] **Loader Branding**: Verified `splash-dark.png` displays Convergent Logo.
+- [x] **Button States**: Standardized hover/active brightness filters for primary/secondary buttons.
+- [x] **Focus Rings**: Start container to confirm global matching focus ring color (`var(--cs-primary)`).
+- [x] **Scrollbars**: Applied custom dark scrollbar styling globally (Webkit).
 
 ### 2.4 Refactoring & Cleanup
-- [ ] **cleanup !important**: Refactor CSS to use high-specificity selectors where possible (e.g. `#app .bg-white`) to reduce technical debt.
+- [x] **cleanup !important**: Refactored CSS to use high-specificity selectors (`html.dark`) to reduce global side effects while preserving Dark Mode.
 
 ---
 
