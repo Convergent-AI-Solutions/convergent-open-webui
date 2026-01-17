@@ -1,8 +1,8 @@
-# Convergent Solutions Dark Mode Theme - Task List (Refined + Maintainable)
+# Convergent Solutions Dark Mode Theme - Task List (Refined + Prioritized)
 
 ## Task Overview
 
-This task list incorporates **MVP Lessons** and **New User Requirements** (Loader Logo, Light Mode Support).
+This task list incorporates **MVP Lessons** and **New User Requirements**, prioritizing "Branded Loader" while deferring "Light Mode Toggle".
 
 **Total Estimated Time**: 3-4 Weeks
 **Strategy**: "Aggressive Overrides -> Refactor for Specificity -> Polish -> Verify"
@@ -37,7 +37,7 @@ This task list incorporates **MVP Lessons** and **New User Requirements** (Loade
 - [x] **Modals & Dialogs**: Verified background on Settings modal (Dark #1a1a1a).
 - [x] **Dropdown Menus**: Verified background on Profile/Model dropdowns.
 - [x] **Code Blocks**: Verified syntax highlighting and dark background.
-- [ ] **Markdown Content**: Verify lists, tables, and headers in chat responses.
+- [x] **Markdown Content**: Verified lists, tables, and headers in chat responses.
 
 ### 2.3 Interactive Polish
 - [ ] **Loader Branding**: Ensure page loading screen displays Convergent Logo instead of default Open WebUI logo.
@@ -45,14 +45,8 @@ This task list incorporates **MVP Lessons** and **New User Requirements** (Loade
 - [ ] **Focus Rings**: Ensure global matching focus ring color (`var(--cs-primary)`).
 - [ ] **Scrollbars**: Apply custom dark scrollbar styling globally (Webkit).
 
-### 2.4 Theme System Evolution (Light Mode Support) [NEW]
-*Goal: Enable Light/Dark toggle while maintaining Convergent Branding in both.*
-- [ ] **Restore Theme Toggle**: Un-hide or restore the functionality of the UI Theme Switcher.
-- [ ] **Scoped Overrides**: Refactor global "nuclear" overrides to apply only within `.dark` selector (e.g., `html.dark body`).
-- [ ] **Branded Light Mode**: 
-    - Create a Light Mode variable set (White backgrounds, Dark text).
-    - Ensure `--cs-primary` (Blue) and Logos remain consistent in Light Mode.
-- [ ] **Cleanup !important**: Remove explicit `!important` tags that prevent Light Mode from activating.
+### 2.4 Refactoring & Cleanup
+- [ ] **cleanup !important**: Refactor CSS to use high-specificity selectors where possible (e.g. `#app .bg-white`) to reduce technical debt.
 
 ---
 
@@ -63,7 +57,6 @@ This task list incorporates **MVP Lessons** and **New User Requirements** (Loade
 - [x] **Login Flow**: Sign Up, Sign In (Verified).
 - [x] **Dashboard**: Sidebar, Chat Input (Verified).
 - [x] **Interactive Components**: Modals, Dropdowns, Code Blocks (Verified).
-- [ ] **Light Mode Check**: Verify toggling between Light/Dark works (after Phase 2.4).
 - [ ] **Mobile Responsive**: Verify Sidebar collapse, Chat Input spacing on <768px.
 - [ ] **Error States**: Trigger an error (e.g., failed connection) to check Toast/Alert styling.
 
@@ -91,7 +84,13 @@ This task list incorporates **MVP Lessons** and **New User Requirements** (Loade
 
 ---
 
-## Phase 5: Handoff
+## Phase 5: Handoff & Future Planning
 - [ ] **Final Verification**: Clean install test.
 - [ ] **Stakeholder Demo**.
 - [ ] **Archive**.
+
+### 5.1 Theme System Evolution (Light Mode Support) [LOW PRIORITY]
+*Goal: Enable Light/Dark toggle while maintaining Convergent Branding in both.*
+- [ ] **Restore Theme Toggle**: Restore the UI Theme Switcher.
+- [ ] **Scoped Overrides**: Refactor global overrides to apply only within `.dark`.
+- [ ] **Branded Light Mode**: Create Light Mode variable set with consistent branding.
